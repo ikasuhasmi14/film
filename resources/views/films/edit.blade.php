@@ -17,7 +17,7 @@
 
 
 
-                    <form action="/films/{{$films->id}}" method="POST">
+                    <form action="/films/{{$films->id, $films->kategori}}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                         <div class="form-group">
@@ -28,11 +28,20 @@
 
                         <div class="form-group">
                             <label>kategori Film</label> <br>
-                            <input type="radio" name="kategori" value="{{$films->kategori}}"> Action &nbsp;&nbsp;
-                            <input type="radio" name="kategori" value="{{$films->kategori}}"> Comedy &nbsp;&nbsp;
-                            <input type="radio" name="kategori" value="{{$films->kategori}}"> Romance &nbsp;&nbsp;
-                            <input type="radio" name="kategori" value="{{$films->kategori}}"> Horror &nbsp;&nbsp;
-                            <input type="radio" name="kategori" value="{{$films->kategori}}"> Thriller &nbsp;&nbsp;
+                            @if ($films->kategori == 'Action')
+                                <input type="radio" name="kategori" value="Action" checked="true"> Action &nbsp;&nbsp;
+                            @else
+                                <input type="radio" name="kategori" value="Action"> Action &nbsp;&nbsp;
+                            @endif
+
+                        @if ($films->kategori == 'Comedy')
+                            <input type="radio" name="kategori" value="Comedy" checked="true"> Comedy &nbsp;&nbsp;
+                            @else
+                             <input type="radio" name="kategori" value="Comedy"> Comedy &nbsp;&nbsp;
+                             @endif
+                            <input type="radio" name="kategori" value="Romance"> Romance &nbsp;&nbsp;
+                            <input type="radio" name="kategori" value="Horror"> Horror &nbsp;&nbsp;
+                            <input type="radio" name="kategori" value="Thriller"> Thriller &nbsp;&nbsp;
                         </div> 
 
                         <br>

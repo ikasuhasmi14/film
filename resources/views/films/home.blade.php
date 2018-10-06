@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row right-content-center">
+    <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Beranda</div> 
@@ -19,13 +19,15 @@
                     </div>
                     @endif
 
-                    <h4> Pilih Kategori Film Yang Ingin Kamu Lihat : </h4>
+                    <center><h4> Pilih Kategori Film Yang Ingin Kamu Lihat : </h4>
 
-                    <a href="/films"><button class="btn btn-primary">Action</button></a> &nbsp;&nbsp;&nbsp;
-                    <button class="btn btn-danger">Horror</button> &nbsp;&nbsp;&nbsp;
-                    <button class="btn btn-success">Comedy</button> &nbsp;&nbsp;&nbsp;
-                    <button class="btn btn-warning">Romance</button> &nbsp;&nbsp;&nbsp;
-                    <button class="btn btn-basic">Thriller</button>
+                        <a href="/films/aksi"><button class="btn btn-primary">Action</button></a> &nbsp;&nbsp;&nbsp;
+                        <a href="/films/horror"><button class="btn btn-danger">Horror</button> </a>&nbsp;&nbsp;&nbsp;
+                        <a href="/films/komedi"><button class="btn btn-success">Comedy</button></a>&nbsp;&nbsp;&nbsp;
+                        <a href="/films/romantis"><button class="btn btn-warning">Romance</button></a>&nbsp;&nbsp;&nbsp;
+                        <a href="/films/triler"><button class="btn btn-basic">Thriller</button></a>
+
+                    </center> 
                     <br><br>
 
                     <h4> Hai, Disini Kamu Bisa Mendaftarkan Film Favoritmu Sesuai Kategori</h4>
@@ -82,7 +84,7 @@
                         <table class="d">
 
                             <tr>
-                                <th>Task Name</th>
+                                <th>Nama film</th>
                                 <th>Kategori</th>
                                 <th>Action</th>
                             </tr>
@@ -92,7 +94,7 @@
 
                                 <td>{{ $f->film_name}}</td>
                                 <td>{{ $f->kategori}}</td>
-                                <td>    <a href="/films/{{ $f->id }}/edit">
+                                <td>    <a href="/films/{{$f->id}}/edit">
                                     {{ method_field('PUT') }}
                                     {{ csrf_field() }}
 

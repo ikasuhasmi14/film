@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Films;
+		
 
 class FilmController extends Controller
 {
@@ -12,12 +13,13 @@ class FilmController extends Controller
 		$this->middleware('auth');
 	}
 
-	public function index()
+	public function index(Request $request)
 	{
-		$films = Films::all(); // selcet * from film
-
+		$ab = $request->user()->id;
+		$film = Films::where('user_id', '=', $ab)->get();
+		
 		return view('films.home', [
-			'films' => $films
+			'films' => $film
 			]);
 	}
 
@@ -56,7 +58,7 @@ class FilmController extends Controller
 
 		$film = Films::find($id);	
 		$film->film_name = $request->input('film_name');
-		// $film->kategori = $request->input('kategori');
+		$film->kategori = $request->input('kategori');
 		$film->save();
 
 		return redirect('/films') ;
@@ -69,4 +71,6 @@ class FilmController extends Controller
 		$films->delete();
 		return redirect('/films');
 	}
+
+	
 }

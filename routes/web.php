@@ -17,14 +17,26 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/films', 'HomeController@index')->name('films');
+// Route::get('/films', 'HomeController@index')->name('films');
 
-Route::get('/films', 'FilmController@index');	
+Route::get('/films', 'FilmController@index');
 
 Route::post('/films', 'FilmController@store');
 
 Route::delete('/films/{films}', 'FilmController@destroy');
 
-Route::get('/films/{id}/edit', 'FilmController@edit');
+Route::get('/films/{id}/{kategori}/edit', 'FilmController@edit');
 
 Route::put('/films/{id}', 'FilmController@update');
+
+
+Route::get('/films/aksi', 'KategoriController@aksi');
+
+Route::get('/films/horror', 'KategoriController@horror');
+
+Route::get('/films/komedi', 'KategoriController@komedi');
+
+Route::get('/films/romantis', 'KategoriController@romantis');
+
+Route::get('/films/triler', 'KategoriController@triler');
+

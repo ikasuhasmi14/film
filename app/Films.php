@@ -17,8 +17,5 @@ class Films extends Model
     }
 
 
-    public function getPosterUsername()
-    {
-    	return User::where('id', $this0>user_id)->first()->name;
-    }
+    
 }
